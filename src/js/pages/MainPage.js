@@ -1,6 +1,18 @@
 import Component from "../core/Component.js";
 
 class MainPage extends Component {
+  init() {
+    this.state = {
+      menu: {
+        espresso: [],
+        frappuccino: [],
+        blended: [],
+        teavana: [],
+        desert: [],
+      },
+      curCategory: "espresso",
+    };
+  }
   template() {
     return `
         <div class="d-flex justify-center mt-5 w-100">
