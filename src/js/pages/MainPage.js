@@ -1,4 +1,6 @@
+import Header from "../components/Header.js";
 import Component from "../core/Component.js";
+import { $target } from "../util/dom.js";
 
 class MainPage extends Component {
   init() {
@@ -12,6 +14,10 @@ class MainPage extends Component {
       },
       curCategory: "espresso",
     };
+  }
+  mounted() {
+    const $header = $target(this.$target, '[data-component="header"]');
+    new Header($header, { ...this.state, updateCurCategory: this.updateCurCategory.bind(this) });
   }
   template() {
     return `
