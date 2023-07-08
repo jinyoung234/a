@@ -1,4 +1,5 @@
 import Header from "../components/Header.js";
+import ToDoWrapper from "../components/ToDoWrapper.js";
 import Component from "../core/Component.js";
 import { $target } from "../util/dom.js";
 
@@ -17,7 +18,9 @@ class MainPage extends Component {
   }
   mounted() {
     const $header = $target(this.$target, '[data-component="header"]');
+    const $todoWrapper = $target(this.$target, '[data-component="todoWrapper"]');
     new Header($header, { ...this.state, updateCurCategory: this.updateCurCategory.bind(this) });
+    new ToDoWrapper($todoWrapper, this.state);
   }
   template() {
     return `
