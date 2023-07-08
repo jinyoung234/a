@@ -23,6 +23,9 @@ class MainPage extends Component {
         </di>
     `;
   }
+  updateCurCategory(categoryName) {
+    this.setState({ ...this.state, curCategory: categoryName });
+  }
 }
 
 export default MainPage;
