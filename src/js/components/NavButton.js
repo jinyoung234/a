@@ -1,6 +1,6 @@
 import Component from "../core/Component.js";
 import { $ } from "../util/dom.js";
-import { CATEGORY_TABLE } from "../util/constans.js";
+import { CATEGORY_TABLE } from "../util/constants.js";
 
 class NavButton extends Component {
   template() {
