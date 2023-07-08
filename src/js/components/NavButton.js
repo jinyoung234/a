@@ -1,5 +1,6 @@
 import Component from "../core/Component.js";
-import { CATEGORY_TABLE } from "../util/constants.js";
+import { $ } from "../util/dom.js";
+import { CATEGORY_TABLE } from "../util/constans.js";
 
 class NavButton extends Component {
   template() {
@@ -16,6 +17,15 @@ class NavButton extends Component {
       })
       .join("");
     return element;
+  }
+  setEvent() {
+    $("nav").addEventListener("click", ({ target }) => {
+      const isCategoryNameButton = target.classList.contains("cafe-category-name");
+      if (isCategoryNameButton) {
+        const categoryName = target.closest("[data-category-name]").dataset.categoryName;
+        this.props[0].updateCurCategory(categoryName);
+      }
+    });
   }
 }
 
