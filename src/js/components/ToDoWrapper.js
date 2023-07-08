@@ -1,4 +1,6 @@
 import Component from "../core/Component.js";
+import { $target } from "../util/dom.js";
+import ToDoTitle from "./ToDoTitle.js";
 
 class ToDoWrapper extends Component {
   template() {
@@ -12,6 +14,10 @@ class ToDoWrapper extends Component {
         <div></div>
         <ul id="menu-list" class="mt-3 pl-0"></ul>
     `;
+  }
+  mounted() {
+    const $title = $target(this.$target, '[data-component="title"]');
+    new ToDoTitle($title, this.props);
   }
 }
 
