@@ -1,5 +1,6 @@
 import Component from "../core/Component.js";
 import { $target } from "../util/dom.js";
+import ToDoForm from "./ToDoForm.js";
 import ToDoTitle from "./ToDoTitle.js";
 
 class ToDoWrapper extends Component {
@@ -10,14 +11,16 @@ class ToDoWrapper extends Component {
                 <div data-component="title"></div>
                 <div data-component="todoCount"></div>
             </div>
+            <div data-component="todoForm"></div>
+            <ul id="menu-list" class="mt-3 pl-0"></ul>
         </div>
-        <div></div>
-        <ul id="menu-list" class="mt-3 pl-0"></ul>
     `;
   }
   mounted() {
     const $title = $target(this.$target, '[data-component="title"]');
+    const $todoForm = $target(this.$target, '[data-component="todoForm"]');
     new ToDoTitle($title, this.props);
+    new ToDoForm($todoForm, this.props);
   }
 }
 
