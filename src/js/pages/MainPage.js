@@ -3,7 +3,7 @@ import ToDoWrapper from "../components/ToDoWrapper.js";
 import Component from "../core/Component.js";
 import store from "../store/index.js";
 import { $, $target } from "../util/dom.js";
-import { genNewState } from "../util/mainpage.js";
+import { genDeleteMenu, genNewMenu } from "../util/mainpage.js";
 
 class MainPage extends Component {
   init() {
@@ -26,7 +26,11 @@ class MainPage extends Component {
     const $header = $target(this.$target, '[data-component="header"]');
     const $todoWrapper = $target(this.$target, '[data-component="todoWrapper"]');
     new Header($header, { ...this.state, updateCurCategory: this.updateCurCategory.bind(this) });
-    new ToDoWrapper($todoWrapper, { ...this.state, addMenu: this.addMenu.bind(this) });
+    new ToDoWrapper($todoWrapper, {
+      ...this.state,
+      addMenu: this.addMenu.bind(this),
+      removeMenu: this.removeMenu.bind(this),
+    });
   }
 
   template() {
@@ -50,10 +54,19 @@ class MainPage extends Component {
       alert("값을 입력해주세요.");
       return;
     }
-    const newState = genNewState(this.state, userMenuName);
+    const newState = genNewMenu(this.state, userMenuName);
     store.setLocalStorage(newState);
     this.setState(newState);
     $("#menu-name").value = "";
+  }
+
+  removeMenu(e) {
+    if (confirm("메뉴를 삭제하시겠습니까?")) {
+      const menuId = e.target.closest("li").dataset.menuId;
+      const newState = genDeleteMenu(this.state, menuId);
+      store.setLocalStorage(newState);
+      this.setState(newState);
+    }
   }
 }
 
