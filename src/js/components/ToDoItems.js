@@ -47,8 +47,8 @@ class ToDoItems extends Component {
         removeMenu(e);
       }
       if (isElement("menu-sold-out-button")) {
-        // updateSoldout(e);
-        console.log("c");
+        const { updateSoldout } = this.props;
+        updateSoldout(e);
       }
     });
   }
