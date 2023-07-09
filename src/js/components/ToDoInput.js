@@ -14,6 +14,16 @@ class ToDoInput extends Component {
         />
     `;
   }
+
+  setEvent() {
+    $("#menu-form").addEventListener("keypress", ({ target, key }) => {
+      const isInput = target.closest("input");
+      if (isInput && key === "Enter") {
+        const { addMenu } = this.props;
+        addMenu();
+      }
+    });
+  }
 }
 
 export default ToDoInput;

@@ -14,6 +14,15 @@ class ToDoButton extends Component {
         </button>
     `;
   }
+  setEvent() {
+    $("#menu-form").addEventListener("click", ({ target }) => {
+      const isButton = target.closest("button");
+      if (isButton) {
+        const { addMenu } = this.props;
+        addMenu();
+      }
+    });
+  }
 }
 
 export default ToDoButton;
