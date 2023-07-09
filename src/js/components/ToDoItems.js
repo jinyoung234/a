@@ -39,8 +39,8 @@ class ToDoItems extends Component {
     $("#menu-list").addEventListener("click", (e) => {
       const isElement = (elementName) => e.target.classList.contains(elementName);
       if (isElement("menu-edit-button")) {
-        // updateMenuName(e);
-        console.log("a");
+        const { updateMenuName } = this.props;
+        updateMenuName(e);
       }
       if (isElement("menu-remove-button")) {
         const { removeMenu } = this.props;

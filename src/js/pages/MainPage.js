@@ -30,6 +30,7 @@ class MainPage extends Component {
       ...this.state,
       addMenu: this.addMenu.bind(this),
       removeMenu: this.removeMenu.bind(this),
+      updateMenuName: this.updateMenuName.bind(this),
     });
   }
 
@@ -67,6 +68,15 @@ class MainPage extends Component {
       store.setLocalStorage(newState);
       this.setState(newState);
     }
+  }
+
+  updateMenuName(e) {
+    const $menuName = e.target.closest("li").querySelector(".menu-name");
+    const menuId = e.target.closest("li").dataset.menuId;
+    const updatedMenuName = prompt("메뉴를 수정해주세요.", $menuName.innerText);
+    this.state.menu[this.state.curCategory][menuId].name = updatedMenuName;
+    store.setLocalStorage(this.state);
+    this.setState(this.state);
   }
 }
 
