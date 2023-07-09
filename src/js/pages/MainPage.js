@@ -7,16 +7,19 @@ import { genNewState } from "../util/mainpage.js";
 
 class MainPage extends Component {
   init() {
-    this.state = {
-      menu: {
-        espresso: [],
-        frappuccino: [],
-        blended: [],
-        teavana: [],
-        desert: [],
-      },
-      curCategory: "espresso",
-    };
+    const initState = store.getLocalStorage()
+      ? { ...store.getLocalStorage(), curCategory: "espresso" }
+      : {
+          menu: {
+            espresso: [],
+            frappuccino: [],
+            blended: [],
+            teavana: [],
+            desert: [],
+          },
+          curCategory: "espresso",
+        };
+    this.state = initState;
   }
 
   mounted() {
