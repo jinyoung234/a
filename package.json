@@ -1,0 +1,23 @@
+{
+  "name": "moonbucks-refactoring",
+  "version": "1.0.0",
+  "description": "moon-bucks-refactoring",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open",
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinyoung234/moonbucks-refactoring.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jinyoung234/moonbucks-refactoring/issues"
+  },
+  "homepage": "https://github.com/jinyoung234/moonbucks-refactoring#readme",
+  "devDependencies": {
+    "cypress": "^12.17.0"
+  }
+}
